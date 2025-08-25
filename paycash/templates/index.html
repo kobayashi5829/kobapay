@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>トップページ</title>
-    </head>
-    <body>
-        <h1>Hello World</h1>
-    </body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}KobaPay{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div style="margin-top:8rem"></div>
+<h1 class="maintitle">KobaPay</h1>
+<div style="margin-top:.5rem"></div>
+<p class="subtext">明日、金返せよ</p>
+<div style="margin-top:5rem;"></div>
+<div class="object-center">
+    <a style="border:1px solid black" class="btn" href="#">サインイン</a>
+</div>
+<div style="flex:1"></div>
+{% endblock %}

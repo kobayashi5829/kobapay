@@ -1,5 +1,7 @@
 from .settings_common import *
 
+ALLOWED_HOSTS = ["*"]
+
 # ロギング設定
 LOGGING = {
     'version': 1,

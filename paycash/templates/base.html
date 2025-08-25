@@ -1,0 +1,31 @@
+{% load static %}
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <header>
+            <nav>
+                <ul class="nav-list">
+                    <li><a class="btn" href="#">Dashboard</a></li>
+                </ul>
+                <a class="btn" href="#">Signout</a>
+            </nav>
+        </header>
+        {% endif %}
+        {% block contents %}{% endblock %}
+        <footer>
+            <div class="copyright">
+                <small>&copy; 2025 KobaPay</small>
+            </div>
+        </footer>
+    </body>
+</html>
