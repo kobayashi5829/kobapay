@@ -20,12 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rx%lhn&7_%ebb$gdo&*&fsei2!$@ca^-g$$yvms!jf2+ey6$&i'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,6 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'paycash.apps.PaycashConfig',
+    'accounts.apps.AccountsConfig',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'kobapay.urls'
@@ -127,3 +126,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# リダイレクト
+LOGIN_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'paycash:index'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+# ログアウトリンクのクリック一発でログアウトする設定
+ACCOUNT_LOGOUT_ON_GET = True

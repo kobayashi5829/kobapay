@@ -1,5 +1,11 @@
 from .settings_common import *
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-rx%lhn&7_%ebb$gdo&*&fsei2!$@ca^-g$$yvms!jf2+ey6$&i'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
 ALLOWED_HOSTS = ["*"]
 
 # ロギング設定

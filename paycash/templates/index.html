@@ -14,11 +14,11 @@
 <p class="subtext">明日、金返せよ</p>
 <div style="margin-top:5rem;"></div>
 <div class="object-center">
-    <a style="border:1px solid black" class="btn" href="#">サインイン</a>
+    <a style="border:1px solid black" class="btn" href="{% url 'account_login' %}">サインイン</a>
 </div>
 <div style="margin-top:2rem"></div>
 <div class="object-center">
-    <a style="border:1px solid black" class="btn" href="#">サインアウト</a>
+    <a style="border:1px solid black" class="btn" href="{% url 'account_signup' %}">サインアップ</a>
 </div>
 <div style="flex:1"></div>
 {% endblock %}
