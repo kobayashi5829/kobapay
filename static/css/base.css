@@ -17,11 +17,83 @@ a {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: .5rem 1rem;
-    background-color: rgb(210, 225, 240);
+    padding: 1rem 1rem;
+    background-color: rgb(204, 204, 204);
 }
 
 /* component */
+a.btn {
+    font-size: 2rem;
+    width: 70vw;
+    padding: 1rem;
+    display: inline-block;
+    background-color: dodgerblue;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+}
+
+a.btn:hover {
+    background-color: rgb(26, 123, 220);
+}
+
+.btn {
+    font-size: 2rem;
+    width: 70vw;
+    padding-top: .1rem;
+    padding-bottom: .4rem;
+    background-color: dodgerblue;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: rgb(26, 123, 220);
+}
+
+.container {
+    text-align: center;
+}
+
+.inner {
+    display: inline-block;
+    width: max-content;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 1rem;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.form-group input:hover {
+    border: 1px solid #258ad8;
+    box-shadow: 0 0 2px #258ad8;
+}
+
+.error-message {
+    width: 70vw;
+    font-size: 1rem;
+    text-align: left;
+    padding: .25rem .5rem;
+    color: crimson;
+    background-color: rgb(255, 199, 199);
+    border: 1px solid #da0909;
+    border-radius: 4px;
+}
+
+/* contents */
 /* header */
 .nav-list {
     list-style: none; /* リストの点を消す */
@@ -30,6 +102,7 @@ nav a.btn {
     font-size: 1.5rem;
     display: inline-block;       /* 横幅や高さを持てるようにする */
     padding: .5rem 1rem;          /* 内側余白でボタンっぽく */
+    width: auto;
     background: none; /* btnクラスの背景の解除 */
     color: black;
 }
@@ -52,20 +125,4 @@ nav a.btn:hover {
     text-align: center;
     padding: 3rem 0;
     margin-top: auto;
-}
-
-/* contents */
-a.btn
-{
-    font-size: 2rem;
-    width: 70vw;
-    padding: 1rem;
-    display: inline-block;
-    background-color: deepskyblue;
-    color: black;
-    border-radius: 8px;
-}
-
-.object-center {
-    text-align: center;
 }

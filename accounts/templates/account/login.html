@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}サインイン{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div style="margin-top:9rem"></div>
+<h1 class="maintitle">サインイン</h1>
+<div style="margin-top:1rem"></div>
+<div class="container">
+    <div class="inner">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p class="error-message">{{ field.label }}: {{ error }}</p>
+                <div style="margin-bottom:.5rem"></div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p class="error-message">{{ error }}</p>
+            <div style="margin-bottom:.5rem"></div>
+        {% endfor %}
+        <form method="post" action="{% url 'account_login' %}" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.login.label_tag }}
+                {{ form.login }}
+            </div>
+            <div style="margin-top:1rem"></div>
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <div style="margin-top:2rem"></div>
+            <button type="submit" class="btn">続ける</button>
+        </form>
+    </div>
+</div>
+<div style="margin-top:5rem"></div>
+<div style="flex:1"></div>
+{% endblock %}

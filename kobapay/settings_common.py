@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -136,10 +137,26 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# カスタムフォーム
+ACCOUNT_FORMS = {
+    'login': 'accounts.forms.CustomLoginForm',
+    'signup': 'accounts.forms.CustomSignupForm',
+}
+
+# メール確認はしない
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+# ログイン認証方法
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+# サインアップ必須
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+
 # リダイレクト
 LOGIN_URL = 'account_login'
-LOGIN_REDIRECT_URL = 'paycash:index'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'paycash:home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'paycash:index'
 
 # ログアウトリンクのクリック一発でログアウトする設定
 ACCOUNT_LOGOUT_ON_GET = True
