@@ -28,16 +28,35 @@ a.btn {
     width: 70vw;
     padding: 1rem;
     display: inline-block;
+}
+a.btn.primary {
     background-color: dodgerblue;
     color: rgb(255, 255, 255);
     border-radius: 8px;
 }
-
-a.btn:hover {
+a.btn.primary:hover {
     background-color: rgb(26, 123, 220);
 }
+a.btn.tile {
+    background-color: white;
+    color: #000;
+    border: 1px solid #000;
+    border-top: none;
+}
+a.btn.tile.top {
+    border: 1px solid #000;
+    border-radius: 4px 4px 0 0;
+}
+a.btn.tile.bottom {
+    border: 1px solid #000;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+a.btn.tile:hover {
+    background-color: rgb(239, 239, 239);
+}
 
-.btn {
+button.btn {
     font-size: 2rem;
     width: 70vw;
     padding-top: .1rem;
@@ -47,8 +66,7 @@ a.btn:hover {
     border-radius: 8px;
     text-align: center;
 }
-
-.btn:hover {
+button.btn:hover {
     background-color: rgb(26, 123, 220);
 }
 
@@ -70,14 +88,12 @@ a.btn:hover {
     text-align: left;
     padding: 0 1rem;
 }
-
 .form-group input {
     width: 100%;
     padding: 8px 1rem;
     border: 1px solid #000;
     border-radius: 4px;
 }
-
 .form-group input:hover {
     border: 1px solid #258ad8;
     box-shadow: 0 0 2px #258ad8;
@@ -99,6 +115,7 @@ a.btn:hover {
 .nav-list {
     list-style: none; /* リストの点を消す */
 }
+
 nav a.btn {
     font-size: 1.5rem;
     display: inline-block;       /* 横幅や高さを持てるようにする */
