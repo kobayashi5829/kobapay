@@ -18,7 +18,8 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 1rem 1rem;
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(247, 247, 247);
+    border-bottom: 1px solid #aaa;
 }
 
 /* component */
@@ -107,7 +108,7 @@ nav a.btn {
     color: black;
 }
 nav a.btn:hover {
-    background-color: rgb(170, 198, 227);
+    background-color: rgb(223, 223, 223);
     border-radius: .5rem;
 }
 /*.user-icon {
