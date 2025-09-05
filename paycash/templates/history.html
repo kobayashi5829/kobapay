@@ -14,7 +14,7 @@
 {% for deal in deal_list %}
     <div class="container">
         {% if forloop.first %}
-            <a class="btn tile top" href="#">
+            <a class="btn tile top" href="{% url 'paycash:detail' deal.pk %}">
                 <h1 class="list-title">
                     {{ deal.get_deal_type_display }} {{ deal.amount }}¥
                 </h1>
@@ -28,7 +28,7 @@
                 </p>
             </a>
         {% elif forloop.last %}
-            <a class="btn tile bottom" href="#">
+            <a class="btn tile bottom" href="{% url 'paycash:detail' deal.pk %}">
                 <h1 class="list-title">
                     {{ deal.get_deal_type_display }} {{ deal.amount }}¥
                 </h1>
@@ -42,7 +42,7 @@
                 </p>
             </a>
         {% else %}
-            <a class="btn tile" href="#">
+            <a class="btn tile" href="{% url 'paycash:detail' deal.pk %}">
                 <h1 class="list-title">
                     {{ deal.get_deal_type_display }} {{ deal.amount }}¥
                 </h1>

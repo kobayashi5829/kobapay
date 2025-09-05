@@ -16,3 +16,7 @@ class HistoryView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         deals = Deal.objects.filter(user=self.request.user).order_by('-updated_at')
         return deals
+    
+class DetailView(LoginRequiredMixin, generic.DetailView):
+    model = Deal
+    template_name = 'detail.html'

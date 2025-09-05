@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}取引詳細{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div style="margin-top:1rem"></div>
+<h1 class="main-title">取引詳細</h1>
+<p class="id-text">#{{ object.id }}</p>
+<div style="margin-top:2rem"></div>
+<h1 class="dealtype-text">{{ object.get_deal_type_display }}</h1>
+<div style="margin-top:1rem"></div>
+<hr style="width:80vw;margin:0 auto">
+<div style="margin-top:1rem"></div>
+<h1 class="label-text">金額：<span style="margin-left:1rem"></span>{{ object.amount }}¥</h1>
+<div style="margin-top:1rem"></div>
+<hr style="width:80vw;margin:0 auto">
+<div style="margin-top:1rem"></div>
+<h1 class="label-text">内容</h1>
+<div style="margin-top:.5rem"></div>
+<div class="container">
+    <p class="content-text">{{ object.content }}</p>
+</div>
+<div style="margin-top:1rem"></div>
+<hr style="width:80vw;margin:0 auto">
+<div style="margin-top:1rem"></div>
+<p class="datetime-text">{{ object.updated_at }}</p>
+<div style="margin-top:5rem"></div>
+<div style="flex:1"></div>
+{% endblock %}
