@@ -40,15 +40,15 @@ a.btn.primary:hover {
 a.btn.tile {
     background-color: white;
     color: #000;
-    border: 1px solid #000;
+    border: 1px solid #aaa;
     border-top: none;
 }
 a.btn.tile.top {
-    border: 1px solid #000;
+    border: 1px solid #aaa;
     border-radius: 4px 4px 0 0;
 }
 a.btn.tile.bottom {
-    border: 1px solid #000;
+    border: 1px solid #aaa;
     border-top: none;
     border-radius: 0 0 4px 4px;
 }

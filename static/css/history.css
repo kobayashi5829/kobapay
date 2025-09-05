@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+.maintitle {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+.list-title {
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.list-content {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.list-datetime {
+    text-align: left;
+    font-size: 1rem;
+    color: #888;
+}

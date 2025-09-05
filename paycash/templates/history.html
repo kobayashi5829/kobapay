@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}取引履歴{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/history.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div style="margin-top:1rem"></div>
+<h1 class="maintitle">取引履歴</h1>
+<div style="margin-top:2rem"></div>
+{% for deal in deal_list %}
+    <div class="container">
+        {% if forloop.first %}
+            <a class="btn tile top" href="#">
+                <h1 class="list-title">
+                    {{ deal.get_deal_type_display }} {{ deal.amount }}¥
+                </h1>
+                <div style="margin-top:.5rem"></div>
+                <p class="list-content">
+                    {{ deal.content|truncatechars:20 }}
+                </p>
+                <div style="margin-top:.5rem"></div>
+                <p class="list-datetime">
+                    {{ deal.updated_at }}
+                </p>
+            </a>
+        {% elif forloop.last %}
+            <a class="btn tile bottom" href="#">
+                <h1 class="list-title">
+                    {{ deal.get_deal_type_display }} {{ deal.amount }}¥
+                </h1>
+                <div style="margin-top:.5rem"></div>
+                <p class="list-content">
+                    {{ deal.content|truncatechars:20 }}
+                </p>
+                <div style="margin-top:.5rem"></div>
+                <p class="list-datetime">
+                    {{ deal.updated_at }}
+                </p>
+            </a>
+        {% else %}
+            <a class="btn tile" href="#">
+                <h1 class="list-title">
+                    {{ deal.get_deal_type_display }} {{ deal.amount }}¥
+                </h1>
+                <div style="margin-top:.5rem"></div>
+                <p class="list-content">
+                    {{ deal.content|truncatechars:20 }}
+                </p>
+                <div style="margin-top:.5rem"></div>
+                <p class="list-datetime">
+                    {{ deal.updated_at }}
+                </p>
+            </a>
+        {% endif %}
+    </div>
+{% endfor %}
+<div style="margin-top:5rem"></div>
+<div style="flex:1"></div>
+{% endblock %}

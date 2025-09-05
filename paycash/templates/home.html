@@ -14,9 +14,9 @@
 <p class="total-text">{{ user.total_amount }}</p>
 <div style="margin-top:3rem"></div>
 <div class="container">
-    <a class="btn tile top" href="#">Borrow</a>
+    <a class="btn tile top" href="#">Charge</a>
     <a class="btn tile" href="#">Pay</a>
-    <a class="btn tile bottom" href="#">取引履歴</a>
+    <a class="btn tile bottom" href="{% url 'paycash:history' %}">取引履歴</a>
 </div>
 <div style="flex:1"></div>
 {% endblock  %}
