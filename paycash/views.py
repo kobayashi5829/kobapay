@@ -40,5 +40,53 @@ class ChargeView(LoginRequiredMixin, generic.CreateView):
         user.total_amount += deal.amount
         user.save()
         
-        messages.success(self.request, 'Chargeが完了しました。')
+        messages.success(self.request, 'Charge取引が完了しました。')
         return super().form_valid(form)
+    
+class PayView(LoginRequiredMixin, generic.CreateView):
+    model = Deal
+    template_name = 'pay.html'
+    form_class = DealForm
+    success_url = reverse_lazy('paycash:history')
+
+    def form_valid(self, form):
+        deal = form.save(commit=False)
+        deal.user = self.request.user
+        deal.deal_type = 'P'
+        deal.save()
+
+        user = self.request.user
+        user.total_amount -= deal.amount
+        user.save()
+
+        messages.success(self.request, 'Pay取引が完了しました。')
+        return super().form_valid(form)
+    
+class UpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Deal
+    template_name = 'update.html'
+    form_class = DealForm
+
+    def get_success_url(self):
+        return reverse_lazy('paycash:detail', kwargs={'pk': self.kwargs['pk']})
+    
+    def form_valid(self, form):
+        user = self.request.user
+        before_deal = Deal.objects.get(pk=form.instance.pk)
+        after_deal = form.instance
+
+        if before_deal.deal_type == 'C':
+            user.total_amount -= before_deal.amount
+            user.total_amount += after_deal.amount
+            user.save()
+        elif before_deal.deal_type == 'P':
+            user.total_amount += before_deal.amount
+            user.total_amount -= after_deal.amount
+            user.save()
+
+        messages.success(self.request, '取引情報を更新しました。')
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(self.request, '取引情報の更新に失敗しました。')
+        return super().form_invalid(form)

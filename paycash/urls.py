@@ -8,4 +8,6 @@ urlpatterns = [
     path('history/', views.HistoryView.as_view(), name="history"),
     path('detail/<int:pk>/', views.DetailView.as_view(), name="detail"),
     path('charge/', views.ChargeView.as_view(), name="charge"),
+    path('pay/', views.PayView.as_view(), name="pay"),
+    path('update/<int:pk>/', views.UpdateView.as_view(), name="update"),
 ]

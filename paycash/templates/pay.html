@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Charge取引{% endblock %}
+{% block title %}Pay取引{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/deal.css' %}">
@@ -9,7 +9,7 @@
 
 {% block contents %}
 <div style="margin-top:1rem"></div>
-<h1 class="main-title">Charge</h1>
+<h1 class="main-title">Pay</h1>
 <div style="margin-top:2.5rem"></div>
 <div class="block">
     {% for field in form %}
@@ -34,7 +34,7 @@
             {{ form.content }}
         </div>
         <div style="margin-top:2rem"></div>
-        <button type="submit" class="btn">Charge</button>
+        <button type="submit" class="btn">Pay</button>
     </form>
 </div>
 <div style="margin-top:5rem"></div>

@@ -11,6 +11,13 @@
 <div style="margin-top:1rem"></div>
 <h1 class="main-title">取引詳細</h1>
 <p class="id-text">#{{ object.id }}</p>
+<div style="margin-top:1rem"></div>
+<div style="width:80vw" class="block">
+    <div class="button-group">
+        <a class="update-button" href="{% url 'paycash:update' object.pk %}">更新</a>
+        <a class="delete-button" href="#">削除</a>
+    </div>
+</div>
 <div style="margin-top:2rem"></div>
 <h1 class="dealtype-text">{{ object.get_deal_type_display }}</h1>
 <div style="margin-top:1rem"></div>

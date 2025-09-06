@@ -55,6 +55,14 @@ a.btn.tile.bottom {
 a.btn.tile:hover {
     background-color: rgb(239, 239, 239);
 }
+a.btn.error {
+    background-color: #eb3030;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+}
+a.btn.error:hover {
+    background-color: #bd2626;
+}
 
 button.btn {
     font-size: 2rem;
@@ -68,6 +76,13 @@ button.btn {
 }
 button.btn:hover {
     background-color: rgb(26, 123, 220);
+}
+button.btn.success {
+    background-color: rgb(37, 181, 90);
+    color: rgb(255, 255, 255);
+}
+button.btn.success:hover {
+    background-color: rgb(29, 138, 69); 
 }
 
 .container {

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Charge取引{% endblock %}
+{% block title %}取引編集{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/deal.css' %}">
@@ -9,8 +9,12 @@
 
 {% block contents %}
 <div style="margin-top:1rem"></div>
-<h1 class="main-title">Charge</h1>
-<div style="margin-top:2.5rem"></div>
+<h1 class="main-title">取引編集</h1>
+<div style="margin-top:2rem"></div>
+<h1 class="dealtype-text">{{ object.get_deal_type_display }}</h1>
+<div style="margin-top:1rem"></div>
+<hr style="width:80vw;margin:0 auto">
+<div style="margin-top:1rem"></div>
 <div class="block">
     {% for field in form %}
         {% for error in field.errors %}
@@ -34,7 +38,9 @@
             {{ form.content }}
         </div>
         <div style="margin-top:2rem"></div>
-        <button type="submit" class="btn">Charge</button>
+        <button type="submit" class="btn success">更新</button>
+        <div style="margin-top:1rem"></div>
+        <a style="text-align:center" class="btn error" href="{% url 'paycash:detail' object.pk %}">キャンセル</a>
     </form>
 </div>
 <div style="margin-top:5rem"></div>

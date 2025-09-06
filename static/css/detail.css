@@ -34,3 +34,22 @@
     margin-left: 3rem;
     color: #888;
 }
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+}
+.update-button {
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    background-color: rgb(37, 181, 90);
+    color: rgb(255, 255, 255);
+    border-radius: 8px 0 0 8px;
+}
+.delete-button {
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+    background-color: #eb3030;
+    color: rgb(255, 255, 255);
+    border-radius: 0 8px 8px 0;
+}
