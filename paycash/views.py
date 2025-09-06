@@ -35,5 +35,10 @@ class ChargeView(LoginRequiredMixin, generic.CreateView):
         deal.user = self.request.user
         deal.deal_type = 'C'
         deal.save()
+
+        user = self.request.user
+        user.total_amount += deal.amount
+        user.save()
+        
         messages.success(self.request, 'Chargeが完了しました。')
         return super().form_valid(form)
