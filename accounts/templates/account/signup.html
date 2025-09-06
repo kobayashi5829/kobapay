@@ -15,12 +15,12 @@
     <div class="inner">
         {% for field in form %}
             {% for error in field.errors %}
-                <p class="error-message">{{ field.label }}: {{ error }}</p>
+                <p class="message error">{{ field.label }}: {{ error }}</p>
                 <div style="margin-bottom:.5rem"></div>
             {% endfor %}
         {% endfor %}
         {% for error in form.non_field_errors %}
-            <p class="error-message">{{ error }}</p>
+            <p class="message error">{{ error }}</p>
             <div style="margin-botton:.5rem"></div>
         {% endfor %}
         <form method="post" action="{% url 'account_signup' %}" novalidate>

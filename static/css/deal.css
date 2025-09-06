@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.main-title {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+.label-text {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+.form-group label {
+    font-size: 1.5rem;
+    margin-bottom: .25rem;
+}

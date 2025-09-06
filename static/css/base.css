@@ -74,6 +74,11 @@ button.btn:hover {
     text-align: center;
 }
 
+.block {
+    width: 70vw;
+    margin: 0 auto;
+}
+
 .inner {
     display: inline-block;
     width: max-content;
@@ -94,20 +99,33 @@ button.btn:hover {
     border: 1px solid #000;
     border-radius: 4px;
 }
+.form-group textarea {
+    width: 100%;
+    padding: 8px 1rem;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
 .form-group input:hover {
     border: 1px solid #258ad8;
     box-shadow: 0 0 2px #258ad8;
 }
 
-.error-message {
+.message {
     width: 70vw;
     font-size: 1rem;
     text-align: left;
     padding: .25rem .5rem;
+    border-radius: 4px;
+}
+.message.error {
     color: crimson;
     background-color: rgb(255, 199, 199);
     border: 1px solid #da0909;
-    border-radius: 4px;
+}
+.message.success {
+    color: #127641;
+    background-color: rgb(196, 236, 196);
+    border: 1px solid #127641;
 }
 
 /* contents */
