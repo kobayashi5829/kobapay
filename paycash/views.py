@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from django.views import generic
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 from .models import Deal
 from .forms import DealForm
+
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        deal = get_object_or_404(Deal, pk=self.kwargs['pk'])
+        return self.request.user == deal.user
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
@@ -20,7 +28,7 @@ class HistoryView(LoginRequiredMixin, generic.ListView):
         deals = Deal.objects.filter(user=self.request.user).order_by('-updated_at')
         return deals
     
-class DetailView(LoginRequiredMixin, generic.DetailView):
+class DetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Deal
     template_name = 'detail.html'
 
@@ -62,7 +70,7 @@ class PayView(LoginRequiredMixin, generic.CreateView):
         messages.success(self.request, 'Pay取引が完了しました。')
         return super().form_valid(form)
     
-class UpdateView(LoginRequiredMixin, generic.UpdateView):
+class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView):
     model = Deal
     template_name = 'update.html'
     form_class = DealForm
@@ -91,7 +99,7 @@ class UpdateView(LoginRequiredMixin, generic.UpdateView):
         messages.error(self.request, '取引情報の更新に失敗しました。')
         return super().form_invalid(form)
     
-class DeleteView(LoginRequiredMixin, generic.DeleteView):
+class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
     model = Deal
     template_name = 'delete.html'
     success_url = reverse_lazy('paycash:history')
