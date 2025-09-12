@@ -23,7 +23,7 @@
         {% if forloop.first %}
             <a class="btn tile top" href="{% url 'paycash:detail' deal.pk %}">
                 <h1 class="list-title">
-                    {{ deal.get_deal_type_display }} {{ deal.amount }}¥
+                    {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
                 </h1>
                 <div style="margin-top:.5rem"></div>
                 <p class="list-content">
@@ -37,7 +37,7 @@
         {% elif forloop.last %}
             <a class="btn tile bottom" href="{% url 'paycash:detail' deal.pk %}">
                 <h1 class="list-title">
-                    {{ deal.get_deal_type_display }} {{ deal.amount }}¥
+                    {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
                 </h1>
                 <div style="margin-top:.5rem"></div>
                 <p class="list-content">
@@ -51,7 +51,7 @@
         {% else %}
             <a class="btn tile" href="{% url 'paycash:detail' deal.pk %}">
                 <h1 class="list-title">
-                    {{ deal.get_deal_type_display }} {{ deal.amount }}¥
+                    {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
                 </h1>
                 <div style="margin-top:.5rem"></div>
                 <p class="list-content">
