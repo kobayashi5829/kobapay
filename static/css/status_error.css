@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+body {
+    background: url(../assets/error.png) no-repeat left center;
+    background-size: cover;
+}
+
+.main-title {
+    text-align: center;
+    color: white;
+}
+
+.sub-text {
+    text-align: center;
+    color: white;
+}
+
+.blur {
+    padding: 1rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}500 エラー{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/status_error.css' %}">
+{% endblock  %}
+
+{% block contents %}
+<div style="margin-top:10em"></div>
+<div class="container">
+    <div class="blur">
+        <h1 class="main-title">500 Internal Server Error</h1>
+        <div style="margin-top:1rem"></div>
+        <p class="sub-text">サーバー内部でエラーが発生しました。</p>
+    </div>
+</div>
+<div style="margin-top:5rem"></div>
+<div style="flex:1"></div>
+{% endblock  %}
