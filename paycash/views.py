@@ -90,3 +90,22 @@ class UpdateView(LoginRequiredMixin, generic.UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, '取引情報の更新に失敗しました。')
         return super().form_invalid(form)
+    
+class DeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Deal
+    template_name = 'delete.html'
+    success_url = reverse_lazy('paycash:history')
+
+    def form_valid(self, form):
+        user = self.request.user
+        deal = self.object
+
+        if deal.deal_type == 'C':
+            user.total_amount -= deal.amount
+            user.save()
+        elif deal.deal_type == 'P':
+            user.total_amount += deal.amount
+            user.save()
+
+        messages.success(self.request, f'取引#{ deal.pk }を削除しました。')
+        return super().form_valid(form)

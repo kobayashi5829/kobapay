@@ -28,6 +28,7 @@ a.btn {
     width: 70vw;
     padding: 1rem;
     display: inline-block;
+    text-align: center;
 }
 a.btn.primary {
     background-color: dodgerblue;

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}取引削除{% endblock %}
+
+{% block head %}
+<link rel="stylesheet", href="{% static 'css/delete.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div style="margin-top:1rem"></div>
+<h1 class="main-title">取引削除</h1>
+<p class="id-text">#{{ object.id }}</p>
+<div style="margin-top:5rem"></div>
+<div class="block">
+    <form method="post">
+        {% csrf_token %}
+        <h1 class="label-text">本当に削除しますか？</h1>
+        <div style="margin-top:2rem"></div>
+        <button class="btn success" type="submit">削除</button>
+        <div style="margin-top:1rem"></div>
+        <a class="btn error" href="{% url 'paycash:detail' object.pk %}">キャンセル</a>
+    </form>
+</div>
+<div style="margin-top:5rem"></div>
+<div style="flex:1"></div>
+{% endblock  %}
