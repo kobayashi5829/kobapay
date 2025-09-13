@@ -6,7 +6,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 
-STATIC_ROOT = '/user/share/nginx/html/static'
+STATIC_ROOT = '/usr/share/nginx/html/static'
 
 # ロギング設定
 LOGGING = {
