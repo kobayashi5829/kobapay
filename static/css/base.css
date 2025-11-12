@@ -53,6 +53,10 @@ a.btn.tile.bottom {
     border-top: none;
     border-radius: 0 0 4px 4px;
 }
+a.btn.tile.both {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
 a.btn.tile:hover {
     background-color: rgb(239, 239, 239);
 }

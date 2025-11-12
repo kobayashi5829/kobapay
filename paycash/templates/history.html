@@ -19,51 +19,67 @@
         {% endfor %}
         <div style="margin-top:2rem"></div>
     {% endif %}
-    {% for deal in deal_list %}
-        {% if forloop.first %}
-            <a class="btn tile top" href="{% url 'paycash:detail' deal.pk %}">
-                <h1 class="list-title">
-                    {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
-                </h1>
-                <div style="margin-top:.5rem"></div>
-                <p class="list-content">
-                    {{ deal.content|truncatechars:20 }}
-                </p>
-                <div style="margin-top:.5rem"></div>
-                <p class="list-datetime">
-                    {{ deal.updated_at }}
-                </p>
-            </a>
-        {% elif forloop.last %}
-            <a class="btn tile bottom" href="{% url 'paycash:detail' deal.pk %}">
-                <h1 class="list-title">
-                    {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
-                </h1>
-                <div style="margin-top:.5rem"></div>
-                <p class="list-content">
-                    {{ deal.content|truncatechars:20 }}
-                </p>
-                <div style="margin-top:.5rem"></div>
-                <p class="list-datetime">
-                    {{ deal.updated_at }}
-                </p>
-            </a>
-        {% else %}
-            <a class="btn tile" href="{% url 'paycash:detail' deal.pk %}">
-                <h1 class="list-title">
-                    {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
-                </h1>
-                <div style="margin-top:.5rem"></div>
-                <p class="list-content">
-                    {{ deal.content|truncatechars:20 }}
-                </p>
-                <div style="margin-top:.5rem"></div>
-                <p class="list-datetime">
-                    {{ deal.updated_at }}
-                </p>
-            </a>
-        {% endif %}
-    {% endfor %}
+    {% if deal_list|length == 1 %}
+        <a class="btn tile both" href="{% url 'paycash:detail' deal_list.0.pk %}">
+            <h1 class="list-title">
+                {{ deal_list.0.get_deal_type_display }} ¥ {{ deal_list.0.amount }}
+            </h1>
+            <div style="margin-top:.5rem"></div>
+            <p class="list-content">
+                {{ deal_list.0.content|truncatechars:20 }}
+            </p>
+            <div style="margin-top:.5rem"></div>
+            <p class="list-datetime">
+                {{ deal_list.0.updated_at }}
+            </p>
+        </a>
+    {% else %}
+        {% for deal in deal_list %}
+            {% if forloop.first %}
+                <a class="btn tile top" href="{% url 'paycash:detail' deal.pk %}">
+                    <h1 class="list-title">
+                        {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
+                    </h1>
+                    <div style="margin-top:.5rem"></div>
+                    <p class="list-content">
+                        {{ deal.content|truncatechars:20 }}
+                    </p>
+                    <div style="margin-top:.5rem"></div>
+                    <p class="list-datetime">
+                        {{ deal.updated_at }}
+                    </p>
+                </a>
+            {% elif forloop.last %}
+                <a class="btn tile bottom" href="{% url 'paycash:detail' deal.pk %}">
+                    <h1 class="list-title">
+                        {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
+                    </h1>
+                    <div style="margin-top:.5rem"></div>
+                    <p class="list-content">
+                        {{ deal.content|truncatechars:20 }}
+                    </p>
+                    <div style="margin-top:.5rem"></div>
+                    <p class="list-datetime">
+                        {{ deal.updated_at }}
+                    </p>
+                </a>
+            {% else %}
+                <a class="btn tile" href="{% url 'paycash:detail' deal.pk %}">
+                    <h1 class="list-title">
+                        {{ deal.get_deal_type_display }} ¥ {{ deal.amount }}
+                    </h1>
+                    <div style="margin-top:.5rem"></div>
+                    <p class="list-content">
+                        {{ deal.content|truncatechars:20 }}
+                    </p>
+                    <div style="margin-top:.5rem"></div>
+                    <p class="list-datetime">
+                        {{ deal.updated_at }}
+                    </p>
+                </a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 </div>
 <div style="margin-top:5rem"></div>
 <div style="flex:1"></div>

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
 from .models import Deal
-from .forms import DealForm
+from .forms import BankDealForm, UserDealForm
 
 class OnlyYouMixin(UserPassesTestMixin):
     raise_exception = True
@@ -36,7 +36,7 @@ class DetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
 class ChargeView(LoginRequiredMixin, generic.CreateView):
     model = Deal
     template_name = 'charge.html'
-    form_class = DealForm
+    form_class = BankDealForm
     success_url = reverse_lazy('paycash:history')
 
     def form_valid(self, form):
@@ -55,7 +55,7 @@ class ChargeView(LoginRequiredMixin, generic.CreateView):
 class PayView(LoginRequiredMixin, generic.CreateView):
     model = Deal
     template_name = 'pay.html'
-    form_class = DealForm
+    form_class = BankDealForm
     success_url = reverse_lazy('paycash:history')
 
     def form_valid(self, form):
@@ -74,7 +74,7 @@ class PayView(LoginRequiredMixin, generic.CreateView):
 class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView):
     model = Deal
     template_name = 'update.html'
-    form_class = DealForm
+    form_class = BankDealForm
 
     def get_success_url(self):
         return reverse_lazy('paycash:detail', kwargs={'pk': self.kwargs['pk']})
@@ -117,4 +117,23 @@ class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
             user.save()
 
         messages.success(self.request, f'取引#{ deal.pk }を削除しました。')
+        return super().form_valid(form)
+    
+class SendView(LoginRequiredMixin, generic.CreateView):
+    model = Deal
+    template_name = 'send.html'
+    form_class = UserDealForm
+    success_url = reverse_lazy('paycash:history')
+
+    def form_valid(self, form):
+        deal = form.save(commit=False)
+        deal.user = self.request.user
+        deal.deal_type = 'S'
+        deal.save()
+
+        user = self.request.user
+        user.total_amount -= deal.amount
+        user.save()
+
+        messages.success(self.request, 'Pay取引が完了しました。')
         return super().form_valid(form)
